@@ -1,0 +1,109 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body{
+  overflow:hidden;
+}
+
+/*main section starts*/
+main {
+  max-width: 100%;
+}
+
+section {
+  width: 100vw;
+  max-height: 400px;
+  align-items: initial;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: initial;
+}
+
+section div.left {
+  width: 40vw;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+section div.left h1 {
+  font-size: 1.3rem;
+  margin: 0px 0px 20px 0px;
+}
+
+section div.left div.input-container input {
+  display: block;
+  margin: auto;
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 10px;
+  color: white;
+  border-radius: 2px;
+}
+
+section div.left div.input-container button {
+  padding: 4px;
+  background-color: dodgerblue;
+  border: 1px solid dodgerblue;
+  border-radius: 3px;
+}
+
+section div.right {
+  width: 60vw;
+  max-height: 100%;
+  padding: 20px;
+}
+
+section div.right div#summary-container {
+  border: 1px solid white;
+  color: white;
+  height: 100%;
+  text-align: left;
+  padding: 5px;
+  overflow: auto;
+}
+
+section div.right div#summary-container .copy-btn {
+  color: rgba(255, 255, 255, 0.3);
+  display: block;
+  width: 30px;
+  height: 20px;
+  margin-left: auto;
+  background:#021021;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+section div.right div#summary-container .copy-btn span{
+  width:30px;
+  height: 20px;
+  display: block;
+  border:none;
+}
+section div.right div#summary-container .copy-btn span::before{
+  content:"";
+  border:none;
+}
+@media screen and (max-width:600px) {
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  section div.left {
+    width: 100%;
+    height: 50%;
+  }
+
+  section div.right {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+/*main ends*/
