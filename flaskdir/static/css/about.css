@@ -72,3 +72,14 @@ footer ul li a:hover {
 }
 
 /*footer section ends*/
+
+@media  screen and (max-width:603px) {
+  main section .about-container{
+    font-size:1.3rem;
+  }
+}
+@media  screen and (max-width:418px) {
+  main section .about-container{
+    font-size:1.1rem;
+  }
+}

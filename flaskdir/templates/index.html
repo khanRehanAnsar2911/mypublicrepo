@@ -7,103 +7,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Youtube Transcript Summarizer - home page</title>
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    body{
-      display:flex;
+
+    body {
+      display: flex;
     }
-    .banner-img-container{
-      width:50%;
-      height:100vh;
-      background:#021021;
+
+    .banner-img-container {
+      width: 50%;
+      height: 100vh;
+      background: #021021;
     }
-    .form-container{
-      display:flex;
-      width:50%;
-      height:100vh;
-      position:relative;
+
+    .form-container {
+      display: flex;
+      width: 50%;
+      height: 100vh;
+      position: relative;
     }
-    .login-form-container,.register-form-container{
-      position:absolute;
-      top:50%;
-      left:50%;
-    transform:translate(-50%,-50%);
-      width:60%;
-      height:300px;
+
+    .login-form-container,
+    .register-form-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 300px;
     }
-    .register-form-container{
-      z-index:1;
-      opacity:0;
+
+    .register-form-container {
+      z-index: 1;
+      opacity: 0;
       /* opacity:0; */
     }
-    .login-form-container{
-      z-index:2;
-     
+    .register-form-container a{
+ color:black;
     }
-    .login-form-container input, .register-form-container input{
-      width: 100%;
-      height:40px;
-      margin-bottom:20px;
-      box-shadow:0px 0px 5px inset #ccc;
-      outline:none;
-    }
-    .login-form-container p{
-      margin-top:5px;
-      text-align:right;
-    }
-    .login-form-container button+p,.register-form-container button+p{
-      margin-top:10px;
-      text-align:center;
-    }
-    .login-form-container p a{
-      text-decoration:underline;
-      color:black;
-    }
-     .login-form-container button , .register-form-container button{
-       width:100%;
-       margin-top:10px;
-       height:30px;
-       font-size:1.1rem;
-       background-color:#021021;
-       color:white;
-       border-radius:2px;
-     }
-    @media screen and (max-width:600px) {
-     .login-form-container,.register-form-container{
+    .login-form-container {
+      z-index: 2;
 
-       width:95%;
-       left:90px;
-     }
-      .login-form-container p ,.register-form-container p{
-        font-size:0.6rem;
-        
     }
-  }
+
+    .login-form-container input,
+    .register-form-container input {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      box-shadow: 0px 0px 5px inset #ccc;
+      outline: none;
+    }
+
+    .login-form-container p {
+      margin-top: 5px;
+      text-align: right;
+    }
+
+    .login-form-container button+p,
+    .register-form-container button+p {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .login-form-container p a {
+      text-decoration: underline;
+      color: black;
+    }
+
+    .login-form-container button,
+    .register-form-container button {
+      width: 100%;
+      margin-top: 10px;
+      height: 30px;
+      font-size: 1.1rem;
+      background-color: #021021;
+      color: white;
+      border-radius: 2px;
+    }
+    /* .login-form-container h1{
+
+    } */
+    @media screen and (max-width:600px) {
+
+      .login-form-container,
+      .register-form-container {
+
+        width: 90%;
+
+      }
+
+      .login-form-container p,
+      .register-form-container p {
+        font-size: 0.6rem;
+
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="banner-img-container">
-        
+
   </div>
   <div class="form-container">
+    <div id="indicator"></div>
     <div class="login-form-container">
-      <form action="" method="POST" >
-        <input type="email" name="email" id="email" placeholder="Enter email"/>
-        <input type="password" name="password" id="password" placeholder="Enter password"/>
+      <form action="/login" method="POST" autocomplete="off" id="form1">
+        {% if msg %}
+        <h1> {{ msg }}!</h1>
+        {% endif %}
+        <input type="text" hidden autocomplete="false">
+        <input type="email" id="email1" name="emaill" autocomplete="off" placeholder="Enter email" />
+        <input type="password" id="password1" name="passwordl" autocomplete="off" placeholder="Enter password" />
+
         <p><a href="/Forget">Forget Password?</a></p>
-        <button type="button" id="btn" onclick="event.preventDefault()">Login</button>
+        <button type="submit" id="btn">Login</button>
         <p>dont have account ?<a href="#" id="Register">Register</a></p>
       </form>
-    </div> 
+    </div>
     <div class="register-form-container">
-      <form action="/register" method="POST">
-        <input type="text" name="username" id="username" placeholder="Enter username"/>
-        <input type="email" name="email" id="email" placeholder="Enter email"/>
-        <input type="password" name="password" id="password" placeholder="Enter password"/>
+      <form action="/register" method="POST" id="form2">
+        <input type="text" name="username" id="username" placeholder="Enter username" />
+        <input type="email" name="email" id="email" placeholder="Enter email" />
+        <input type="password" name="password" id="password" placeholder="Enter password" />
         <button type="submit">Register</button>
         <p>Already have an account ?<a href="#" id="login">Login</a></p>
       </form>
@@ -111,6 +141,13 @@
   </div>
   <script src="/static/js/indscript.js"></script>
   <script src="/static/js/login_req.js"></script>
+  <script>
+    let div=document.querySelector(".login-form-container")
+    setTimeout(()=>{
+      // console.log(div.firstElementChild.firstElementChild)
+      div.firstElementChild.firstElementChild.innerHTML=""
+    },3000)
+  </script>
 </body>
 
 </html>

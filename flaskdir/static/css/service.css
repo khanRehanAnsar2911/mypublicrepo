@@ -34,7 +34,11 @@ section div.left h1 {
   font-size: 1.3rem;
   margin: 0px 0px 20px 0px;
 }
-
+section div.left div.input-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 section div.left div.input-container input {
   display: block;
   margin: auto;
@@ -50,6 +54,7 @@ section div.left div.input-container button {
   background-color: dodgerblue;
   border: 1px solid dodgerblue;
   border-radius: 3px;
+  
 }
 
 section div.right {
@@ -103,6 +108,10 @@ section div.right div#summary-container .copy-btn span::before{
   section div.right {
     width: 100%;
     height: 50%;
+  }
+  section div.left div.input-container button{
+    display: block;
+    margin: auto;
   }
 }
 
